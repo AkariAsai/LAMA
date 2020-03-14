@@ -223,13 +223,17 @@ def lowercase_samples(samples, use_negated_probes=False):
 def filter_samples(model, samples, vocab_subset, max_sentence_length, template):
     msg = ""
     new_samples = []
+    excluded_examples_idx  = []
     samples_exluded = 0
-    for sample in samples:
+    for sampled_idx, sample in enumerate(samples):
         excluded = False
         if "obj_label" in sample and "sub_label" in sample:
 
             obj_label_ids = model.get_id(sample["obj_label"])
 
+            if obj_label_ids is None or len(obj_label_ids) > 1:
+                excluded_examples_idx.append(sampled_idx)
+                continue
             if obj_label_ids:
                 recostructed_word = " ".join(
                     [model.vocab[x] for x in obj_label_ids]
@@ -296,6 +300,9 @@ def filter_samples(model, samples, vocab_subset, max_sentence_length, template):
             )
             samples_exluded += 1
     msg += "samples exluded  : {}\n".format(samples_exluded)
+    
+    with open('{}_excluded.json'.format(template), 'w') as f:
+        json.dump(excluded_examples_idx, f)
     return new_samples, msg
 
 
