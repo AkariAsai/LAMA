@@ -221,6 +221,12 @@ def lowercase_samples(samples, use_negated_probes=False):
 
 
 def filter_samples(model, samples, vocab_subset, max_sentence_length, template):
+    file_list = glob.glob('*_excluded.json')
+    excluded_id_file_name = '{}_excluded.json'.format(template)
+    if excluded_id_file_name in file_list:
+        excluded_id_lists = json.load(open(excluded_id_file_name))
+    else:
+        excluded_id_lists = []
     msg = ""
     new_samples = []
     excluded_examples_idx  = []
@@ -228,9 +234,9 @@ def filter_samples(model, samples, vocab_subset, max_sentence_length, template):
     for sampled_idx, sample in enumerate(samples):
         excluded = False
         if "obj_label" in sample and "sub_label" in sample:
-
             obj_label_ids = model.get_id(sample["obj_label"])
-
+            if sampled_idx in excluded_id_lists:
+                continue
             if obj_label_ids is None or len(obj_label_ids) > 1:
                 excluded_examples_idx.append(sampled_idx)
                 continue
