@@ -17,36 +17,36 @@ from shutil import copyfile
 from collections import defaultdict
 
 LMs = [
-    {
-        "lm": "roberta",
-        "label": "roberta_base",
-        "models_names": ["roberta"],
-        "roberta_model_name": "model.pt",
-        "roberta_model_dir": "/home/akari/projects/LAMA/pre-trained_language_models/roberta.base/",
-        "roberta_vocab_name": "dict.txt"
-    },
-    {
-        "lm": "roberta",
-        "label": "roberta_large",
-        "models_names": ["roberta"],
-        "roberta_model_name": "model.pt",
-        "roberta_model_dir": "/home/akari/projects/LAMA/pre-trained_language_models/roberta.large/",
-        "roberta_vocab_name": "dict.txt"
-    },
     # {
-    #     "lm": "bert",
-    #     "label": "bert_base_reduced",
-    #     "models_names": ["bert"],
-    #     "bert_model_name": "bert-base-cased",
-    #     "bert_model_dir": "/home/akari/projects/LAMA/pre-trained_language_models/bert/cased_L-12_H-768_A-12",
+    #     "lm": "roberta",
+    #     "label": "roberta_base",
+    #     "models_names": ["roberta"],
+    #     "roberta_model_name": "model.pt",
+    #     "roberta_model_dir": "/home/akari/projects/LAMA/pre-trained_language_models/roberta.base/",
+    #     "roberta_vocab_name": "dict.txt"
     # },
     # {
-    #     "lm": "bert",
-    #     "label": "bert_base_reduced",
-    #     "models_names": ["bert"],
-    #     "bert_model_name": "bert-large-cased",
-    #     "bert_model_dir": "/home/akari/projects/LAMA/pre-trained_language_models/bert/cased_L-24_H-1024_A-16",
+    #     "lm": "roberta",
+    #     "label": "roberta_large",
+    #     "models_names": ["roberta"],
+    #     "roberta_model_name": "model.pt",
+    #     "roberta_model_dir": "/home/akari/projects/LAMA/pre-trained_language_models/roberta.large/",
+    #     "roberta_vocab_name": "dict.txt"
     # },
+    {
+        "lm": "bert",
+        "label": "bert_base_reduced",
+        "models_names": ["bert"],
+        "bert_model_name": "bert-base-cased",
+        "bert_model_dir": "/home/akari/projects/LAMA/pre-trained_language_models/bert/cased_L-12_H-768_A-12",
+    },
+    {
+        "lm": "bert",
+        "label": "bert_base_reduced",
+        "models_names": ["bert"],
+        "bert_model_name": "bert-large-cased",
+        "bert_model_dir": "/home/akari/projects/LAMA/pre-trained_language_models/bert/cased_L-24_H-1024_A-16",
+    },
 ]
 
 
