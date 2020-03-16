@@ -22,6 +22,7 @@ from multiprocessing.pool import ThreadPool
 import multiprocessing
 import lama.evaluation_metrics as metrics
 import time, sys
+import glob
 
 
 def load_file(filename):
